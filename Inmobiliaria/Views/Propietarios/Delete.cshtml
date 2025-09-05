@@ -1,0 +1,11 @@
+﻿@model Inmobiliaria.Models.Propietario
+
+<h2>Dar de baja (borrado lógico)</h2>
+
+<p>¿Confirmás dar de baja al propietario @Model.Apellido, @Model.Nombre?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Confirmar</button>
+    <a asp-action="Index">Cancelar</a>
+</form>
