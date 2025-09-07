@@ -1,11 +1,11 @@
-﻿@model Inmobiliaria.Models.Inquilino
+﻿@model Inmobiliaria.Models.Inquilino //modelo para la vista de borrado lógico
 
 <h2>Dar de baja (borrado lógico)</h2>
 
-<p>¿Confirmás dar de baja al Inquilino @Model.Apellido, @Model.Nombre?</p>
+<p>¿Confirmás dar de baja al inquilino <strong>@Model.Apellido, @Model.Nombre</strong>?</p>
 
 <form asp-action="Delete" method="post">
     <input type="hidden" asp-for="Id" />
-    <button type="submit">Confirmar</button>
-    <a asp-action="Index">Cancelar</a>
+    <button type="submit" class="btn btn-danger">Confirmar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>

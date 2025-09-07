@@ -1,14 +1,23 @@
-﻿@model Inmobiliaria.Models.Inquilino
+﻿@model Inmobiliaria.Models.Inquilino  //modelo para la vista de detalle
 
 <h2>Detalle de Inquilino</h2>
 
-<p><strong>DNI:</strong> @Model.Dni</p>
-<p><strong>Nombre:</strong> @Model.Nombre</p>
-<p><strong>Apellido:</strong> @Model.Apellido</p>
-<p><strong>Teléfono:</strong> @Model.Telefono</p>
-<p><strong>Email:</strong> @Model.Email</p>
-<p><strong>Dirección:</strong> @Model.Direccion</p>
-<p><strong>Activo:</strong> @(Model.Activo ? "Sí" : "No")</p>
+<dl class="row">
+    <dt class="col-sm-3">DNI</dt>
+    <dd class="col-sm-9">@Model.Dni</dd>
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">@Model.Nombre</dd>
+    <dt class="col-sm-3">Apellido</dt>
+    <dd class="col-sm-9">@Model.Apellido</dd>
+    <dt class="col-sm-3">Teléfono</dt>
+    <dd class="col-sm-9">@Model.Telefono</dd>
+    <dt class="col-sm-3">Email</dt>
+    <dd class="col-sm-9">@Model.Email</dd>
+    <dt class="col-sm-3">Dirección</dt>
+    <dd class="col-sm-9">@Model.Direccion</dd>
+    <dt class="col-sm-3">Activo</dt>
+    <dd class="col-sm-9">@(Model.Activo ? "Sí" : "No")</dd>
+</dl>
 
-<a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
-<a asp-action="Index">Volver</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

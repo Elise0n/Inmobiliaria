@@ -1,29 +1,35 @@
-﻿@model IEnumerable<Inmobiliaria.Models.Inquilino> //Recibe una lista de Inquilinos
+﻿@model IEnumerable<Inmobiliaria.Models.Inquilino> //modelo para la vista
 
-<h2>Inquilino</h2>
+<h2>Inquilinos</h2>
 
-<p><a asp-action="Create">Nuevo Inquilino</a></p>
+<p><a asp-action="Create" class="btn btn-primary">Nuevo Inquilino</a></p>
 
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>DNI</th><th>Apellido</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Acciones</th>
+            <th>DNI</th>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-    @foreach (var p in Model) {                       <!-- Itera la lista -->
-        <tr>
-            <td>@p.Dni</td>
-            <td>@p.Apellido</td>
-            <td>@p.Nombre</td>
-            <td>@p.Telefono</td>
-            <td>@p.Email</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@p.Id">Ver</a> |
-                <a asp-action="Edit" asp-route-id="@p.Id">Editar</a> |
-                <a asp-action="Delete" asp-route-id="@p.Id">Dar de baja</a>
-            </td>
-        </tr>
-    }
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.Dni</td>
+                <td>@i.Apellido</td>
+                <td>@i.Nombre</td>
+                <td>@i.Telefono</td>
+                <td>@i.Email</td>
+                <td class="text-nowrap">
+                    <a asp-action="Details" asp-route-id="@i.Id">Ver</a> |
+                    <a asp-action="Edit" asp-route-id="@i.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@i.Id">Dar de baja</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
