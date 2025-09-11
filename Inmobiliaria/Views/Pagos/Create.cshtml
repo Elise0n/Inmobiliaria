@@ -1,34 +1,18 @@
 ﻿@model Inmobiliaria.Models.Pago
 
-<h2>Nuevo Pago</h2>
+<h2>@(ViewData["Title"] ?? "Pago")</h2>
 
-<form asp-action="Create" method="post" class="row g-3">
+<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="ContratoId" />
 
-    <div class="col-md-3">
-        <label class="form-label">Nro Cuota</label>
-        <input asp-for="NroCuota" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Periodo (YYYY-MM)</label>
-        <input asp-for="Periodo" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Fecha Pago</label>
-        <input asp-for="FechaPago" type="date" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Importe</label>
-        <input asp-for="Importe" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Recargo</label>
-        <input asp-for="Recargo" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Estado</label>
-        <input asp-for="Estado" class="form-control" />
-    </div>
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Nro Cuota" }, { "Name", "NroCuota" }, { "Type", "number" }, { "Col", "col-md-2" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Periodo (YYYY-MM)" }, { "Name", "Periodo" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Fecha Pago" }, { "Name", "FechaPago" }, { "Type", "date" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Importe" }, { "Name", "Importe" }, { "Type", "number" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Recargo" }, { "Name", "Recargo" }, { "Type", "number" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Estado" }, { "Name", "Estado" }, { "Col", "col-md-3" } })
 
     <div class="col-12">
         <button type="submit" class="btn btn-success">Guardar</button>

@@ -5,30 +5,30 @@
 <form asp-action="Create" method="post" class="row g-3">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="col-md-3">
-        <label class="form-label">DNI</label>
-        <input asp-for="Dni" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Nombre</label>
-        <input asp-for="Nombre" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Apellido</label>
-        <input asp-for="Apellido" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Teléfono</label>
-        <input asp-for="Telefono" class="form-control" />
-    </div>
-    <div class="col-md-5">
-        <label class="form-label">Email</label>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Dirección</label>
-        <input asp-for="Direccion" class="form-control" />
-    </div>
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+    { "Label", "DNI"}, { "Name", "Dni"}, { "Type", "text"}, { "Col", "col-md-3"}
+        })
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+        { "Label", "Nombre"}, { "Name", "Nombre"}, { "Type", "text"}, { "Col", "col-md-4"}
+        })
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+        { "Label", "Apellido"}, { "Name", "Apellido"}, { "Type", "text"}, { "Col", "col-md-4"}
+        })
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+        { "Label", "Teléfono"}, { "Name", "Telefono"}, { "Type", "text"}, { "Col", "col-md-3"}
+        })
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+        { "Label", "Email"}, { "Name", "Email"}, { "Type", "email"}, { "Col", "col-md-5"}
+        })
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) {
+        { "Label", "Dirección"}, { "Name", "Direccion"}, { "Type", "text"}, { "Col", "col-md-6"}
+        })
+
     <div class="col-md-2">
         <label class="form-check-label">Activo</label>
         <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />

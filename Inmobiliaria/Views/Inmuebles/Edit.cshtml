@@ -1,39 +1,19 @@
 ﻿@model Inmobiliaria.Models.Inmueble
 
-<h2>Editar Inmueble</h2>
-<form asp-action="Edit" method="post" class="row g-3">
-    <input type="hidden" asp-for="Id" />
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h2>@(ViewData["Title"] ?? "Inmueble")</h2>
 
-    <div class="col-md-6">
-        <label class="form-label">PropietarioId</label>
-        <input asp-for="PropietarioId" class="form-control" />
-    </div>
-    <div class="col-md-6">
-        <label class="form-label">Dirección</label>
-        <input asp-for="Direccion" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Tipo</label>
-        <input asp-for="Tipo" class="form-control" />
-    </div>
+<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Dirección" }, { "Name", "Direccion" }, { "Col", "col-md-6" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Tipo" }, { "Name", "Tipo" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Ambientes" }, { "Name", "Ambientes" }, { "Type", "number" }, { "Col", "col-md-2" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Superficie (m²)" }, { "Name", "SuperficieM2" }, { "Type", "number" }, { "Col", "col-md-2" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Precio Base" }, { "Name", "PrecioBase" }, { "Type", "number" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Situación" }, { "Name", "Situacion" }, { "Col", "col-md-3" } })
+
     <div class="col-md-2">
-        <label class="form-label">Ambientes</label>
-        <input asp-for="Ambientes" class="form-control" />
-    </div>
-    <div class="col-md-2">
-        <label class="form-label">Superficie m²</label>
-        <input asp-for="SuperficieM2" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Precio base</label>
-        <input asp-for="PrecioBase" class="form-control" />
-    </div>
-    <div class="col-md-3">
-        <label class="form-label">Situación</label>
-        <input asp-for="Situacion" class="form-control" />
-    </div>
-    <div class="col-md-3">
         <label class="form-check-label">Activo</label>
         <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />
     </div>

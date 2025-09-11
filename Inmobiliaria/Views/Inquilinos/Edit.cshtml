@@ -1,39 +1,21 @@
-﻿@model Inmobiliaria.Models.Inquilino //modelo para el editar
+﻿@model Inmobiliaria.Models.Inquilino
 
-<h2>Editar Inquilino</h2>
+<h2>@(ViewData["Title"] ?? "Inquilino")</h2>
 
-<form asp-action="Edit" method="post" class="row g-3">
-    <input type="hidden" asp-for="Id" />
+<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
 
-    <div class="col-md-4">
-        <label class="form-label">DNI</label>
-        <input asp-for="Dni" class="form-control" />
-        <span asp-validation-for="Dni" class="text-danger"></span>
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Nombre</label>
-        <input asp-for="Nombre" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Apellido</label>
-        <input asp-for="Apellido" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Teléfono</label>
-        <input asp-for="Telefono" class="form-control" />
-    </div>
-    <div class="col-md-4">
-        <label class="form-label">Email</label>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div class="col-md-8">
-        <label class="form-label">Dirección</label>
-        <input asp-for="Direccion" class="form-control" />
-    </div>
-    <div class="col-md-3">
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "DNI" }, { "Name", "Dni" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Nombre" }, { "Name", "Nombre" }, { "Col", "col-md-4" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Apellido" }, { "Name", "Apellido" }, { "Col", "col-md-4" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Teléfono" }, { "Name", "Telefono" }, { "Col", "col-md-3" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Email" }, { "Name", "Email" }, { "Type", "email" }, { "Col", "col-md-5" } })
+    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Dirección" }, { "Name", "Direccion" }, { "Col", "col-md-6" } })
+
+    <div class="col-md-2">
         <label class="form-check-label">Activo</label>
-        <input asp-for="Activo" class="form-check-input ms-2" type="checkbox" />
+        <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />
     </div>
 
     <div class="col-12">
@@ -41,6 +23,3 @@
         <a asp-action="Index" class="btn btn-secondary">Volver</a>
     </div>
 </form>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

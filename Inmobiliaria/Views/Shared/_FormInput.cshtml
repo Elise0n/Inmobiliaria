@@ -1,0 +1,14 @@
+﻿@model dynamic
+@{
+    // Parámetros recibidos por ViewData
+    string label = ViewData["Label"] as string ?? "";
+    string name = ViewData["Name"] as string ?? "";
+    string type = ViewData["Type"] as string ?? "text";
+    string col = ViewData["Col"] as string ?? "col-md-4"; // ancho por defecto
+}
+
+<div class="@col">
+    <label asp-for="@name" class="form-label">@label</label>
+    <input asp-for="@name" type="@type" class="form-control" />
+    <span asp-validation-for="@name" class="text-danger"></span>
+</div>
