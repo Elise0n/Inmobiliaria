@@ -1,0 +1,58 @@
+﻿@model Inmobiliaria.Models.Contrato
+
+<h2>Editar Contrato</h2>
+
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="col-md-4">
+        <label class="form-label">InmuebleId</label>
+        <input asp-for="InmuebleId" class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">InquilinoId</label>
+        <input asp-for="InquilinoId" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Fecha Inicio</label>
+        <input asp-for="FechaInicio" type="date" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Fecha Fin</label>
+        <input asp-for="FechaFin" type="date" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Monto Mensual</label>
+        <input asp-for="MontoMensual" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Depósito</label>
+        <input asp-for="Deposito" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Estado</label>
+        <input asp-for="Estado" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Multa (%)</label>
+        <input asp-for="MultaPct" class="form-control" />
+    </div>
+    <div class="col-12">
+        <label class="form-label">Observaciones</label>
+        <textarea asp-for="Observaciones" class="form-control"></textarea>
+    </div>
+    <div class="col-md-3">
+        <label class="form-check-label">Activo</label>
+        <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

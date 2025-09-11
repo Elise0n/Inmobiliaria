@@ -1,0 +1,27 @@
+﻿@model Inmobiliaria.Models.Contrato
+
+<h2>Detalle de Contrato</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">InmuebleId</dt>
+    <dd class="col-sm-9">@Model.InmuebleId</dd>
+    <dt class="col-sm-3">InquilinoId</dt>
+    <dd class="col-sm-9">@Model.InquilinoId</dd>
+    <dt class="col-sm-3">Fecha Inicio</dt>
+    <dd class="col-sm-9">@Model.FechaInicio.ToShortDateString()</dd>
+    <dt class="col-sm-3">Fecha Fin</dt>
+    <dd class="col-sm-9">@Model.FechaFin.ToShortDateString()</dd>
+    <dt class="col-sm-3">Monto Mensual</dt>
+    <dd class="col-sm-9">@Model.MontoMensual.ToString("C")</dd>
+    <dt class="col-sm-3">Depósito</dt>
+    <dd class="col-sm-9">@Model.Deposito</dd>
+    <dt class="col-sm-3">Estado</dt>
+    <dd class="col-sm-9">@Model.Estado</dd>
+    <dt class="col-sm-3">Multa (%)</dt>
+    <dd class="col-sm-9">@Model.MultaPct</dd>
+    <dt class="col-sm-3">Observaciones</dt>
+    <dd class="col-sm-9">@Model.Observaciones</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

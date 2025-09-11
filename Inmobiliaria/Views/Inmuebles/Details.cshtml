@@ -1,0 +1,19 @@
+﻿@model Inmobiliaria.Models.Inmueble
+
+<h2>Detalle de Inmueble</h2>
+<dl class="row">
+    <dt class="col-sm-3">Dirección</dt>
+    <dd class="col-sm-9">@Model.Direccion</dd>
+    <dt class="col-sm-3">Tipo</dt>
+    <dd class="col-sm-9">@Model.Tipo</dd>
+    <dt class="col-sm-3">Precio</dt>
+    <dd class="col-sm-9">@Model.PrecioBase?.ToString("C")</dd>
+    <dt class="col-sm-3">Situación</dt>
+    <dd class="col-sm-9">@Model.Situacion</dd>
+    <dt class="col-sm-3">Ambientes</dt>
+    <dd class="col-sm-9">@Model.Ambientes</dd>
+    <dt class="col-sm-3">Superficie m²</dt>
+    <dd class="col-sm-9">@Model.SuperficieM2</dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

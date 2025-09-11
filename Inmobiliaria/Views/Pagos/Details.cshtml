@@ -1,0 +1,21 @@
+﻿@model Inmobiliaria.Models.Pago
+
+<h2>Detalle de Pago</h2>
+
+<dl class="row">
+    <dt class="col-sm-3">Nro Cuota</dt>
+    <dd class="col-sm-9">@Model.NroCuota</dd>
+    <dt class="col-sm-3">Periodo</dt>
+    <dd class="col-sm-9">@Model.Periodo</dd>
+    <dt class="col-sm-3">Fecha Pago</dt>
+    <dd class="col-sm-9">@Model.FechaPago?.ToShortDateString()</dd>
+    <dt class="col-sm-3">Importe</dt>
+    <dd class="col-sm-9">@Model.Importe.ToString("C")</dd>
+    <dt class="col-sm-3">Recargo</dt>
+    <dd class="col-sm-9">@Model.Recargo.ToString("C")</dd>
+    <dt class="col-sm-3">Estado</dt>
+    <dd class="col-sm-9">@Model.Estado</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+<a asp-action="Index" asp-route-contratoId="@Model.ContratoId" class="btn btn-secondary">Volver</a>

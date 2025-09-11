@@ -1,0 +1,45 @@
+﻿@model Inmobiliaria.Models.Inmueble
+
+<h2>Editar Inmueble</h2>
+<form asp-action="Edit" method="post" class="row g-3">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="col-md-6">
+        <label class="form-label">PropietarioId</label>
+        <input asp-for="PropietarioId" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Dirección</label>
+        <input asp-for="Direccion" class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Tipo</label>
+        <input asp-for="Tipo" class="form-control" />
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Ambientes</label>
+        <input asp-for="Ambientes" class="form-control" />
+    </div>
+    <div class="col-md-2">
+        <label class="form-label">Superficie m²</label>
+        <input asp-for="SuperficieM2" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Precio base</label>
+        <input asp-for="PrecioBase" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label">Situación</label>
+        <input asp-for="Situacion" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-check-label">Activo</label>
+        <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</form>

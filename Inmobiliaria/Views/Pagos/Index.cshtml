@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Inmobiliaria.Models.Pago>
+
+<h2>Pagos</h2>
+<p><a asp-action="Create" asp-route-contratoId="@ViewBag.ContratoId" class="btn btn-primary">Nuevo Pago</a></p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nro Cuota</th>
+            <th>Periodo</th>
+            <th>Fecha Pago</th>
+            <th>Importe</th>
+            <th>Recargo</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.NroCuota</td>
+                <td>@p.Periodo</td>
+                <td>@p.FechaPago?.ToShortDateString()</td>
+                <td>@p.Importe.ToString("C")</td>
+                <td>@p.Recargo.ToString("C")</td>
+                <td>@p.Estado</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@p.Id">Ver</a> |
+                    <a asp-action="Edit" asp-route-id="@p.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@p.Id">Anular</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
