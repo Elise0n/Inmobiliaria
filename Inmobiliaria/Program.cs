@@ -10,6 +10,9 @@ using Inmobiliaria.Repositories; // Namespace donde están los repositorios
 var builder = WebApplication.CreateBuilder(args);  // Crea el "host" y carga configuración (appsettings, env, etc.)
 builder.Services.AddTransient<IPropietarioRepository, PropietarioRepository>(); // Inyecta PropietarioRepository
 builder.Services.AddTransient<IInquilinoRepository, InquilinoRepository>(); // Inyecta InquilinoRepository
+builder.Services.AddTransient<IInmuebleRepository, InmuebleRepository>();   // Inyecta InmuebleRepository
+builder.Services.AddTransient<IContratoRepository, ContratoRepository>();   // Inyecta ContratoRepository
+builder.Services.AddTransient<IPagoRepository, PagoRepository>();         // Inyecta PagoRepository/
 
 // registra la factory
 builder.Services.AddTransient<DbConnectionFactory>();

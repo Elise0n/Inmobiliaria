@@ -38,4 +38,20 @@
         <input asp-for="MultaPct" class="form-control" />
     </div>
     <div class="col-12">
-        <label
+        <label class="form-label">Observaciones</label>
+        <textarea asp-for="Observaciones" class="form-control"></textarea>
+    </div>
+    <div class="col-md-3">
+        <label class="form-check-label">Activo</label>
+        <input asp-for="Activo" type="checkbox" class="form-check-input ms-2" />
+    </div>
+
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
