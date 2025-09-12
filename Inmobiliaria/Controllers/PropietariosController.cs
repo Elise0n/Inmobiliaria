@@ -38,11 +38,22 @@ namespace Inmobiliaria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Propietario p)
         {
-            if (!ModelState.IsValid) return View(p);   // Valida modelo
-            p.CreadoPor = User?.Identity?.Name ?? "sistema"; // Auditoría simple
-            var id = await _repo.CreateAsync(p);       // Inserta en BD
-            return RedirectToAction(nameof(Details), new { id }); // Redirige a Details
+            if (!ModelState.IsValid)
+            {
+                return View(p);   // Valida modelo
+            }
+            try
+            {
+                p.CreadoPor = User?.Identity?.Name ?? "sistema"; // Auditoría simple
+                var id = await _repo.CreateAsync(p);       // Inserta en BD
+                return RedirectToAction(nameof(Details), new { id }); // Redirige a Details
+            }
+            catch
+            {
+                ModelState.AddModelError("", "No se pudo crear el propietario.");
+                return View(p);   // Si hay error, vuelve al formulario
 
+            }
         }
 
         // GET: /Propietarios/Edit/5

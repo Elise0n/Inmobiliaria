@@ -9,9 +9,7 @@ using System.Data.Common;
 
 namespace Inmobiliaria.Repositories
 {
-    /// <summary>
     /// Implementación ADO.NET de IInquilinoRepository (MySQL).
-    /// </summary>
     public class InquilinoRepository : IInquilinoRepository
     {
         private readonly DbConnectionFactory _factory; // Factory de conexiones
@@ -36,7 +34,7 @@ namespace Inmobiliaria.Repositories
                 WHERE eliminado = 0
                 ORDER BY apellido, nombre;";
 
-            using var reader = cmd.ExecuteReader();
+            using var reader = await cmd.ExecuteReaderAsync();
             while (await reader.ReadAsync())                   // Iteramos cada fila
             {
                 // Mapear columnas a objeto Inquilino
@@ -71,8 +69,7 @@ namespace Inmobiliaria.Repositories
                 WHERE id = @id AND eliminado = 0;";
             cmd.Parameters.Add(new MySqlParameter("@id", id));
 
-            using var reader = cmd.ExecuteReader();
-            ;
+            using var reader = await cmd.ExecuteReaderAsync();
             if (await reader.ReadAsync())
             {
                 return new Inquilino
@@ -140,7 +137,7 @@ namespace Inmobiliaria.Repositories
             cmd.Parameters.Add(new MySqlParameter("@modificado_por", i.ModificadoPor ?? "sistema"));
             cmd.Parameters.Add(new MySqlParameter("@id", i.Id));
 
-            var rows = cmd.ExecuteNonQuery();// Filas afectadas
+            var rows = await cmd.ExecuteNonQueryAsync();// Filas afectadas
             return rows > 0;
         }
 
@@ -155,7 +152,7 @@ namespace Inmobiliaria.Repositories
             cmd.Parameters.Add(new MySqlParameter("@user", user));
             cmd.Parameters.Add(new MySqlParameter("@id", id));
 
-            var rows = cmd.ExecuteNonQuery();
+            var rows = await cmd.ExecuteNonQueryAsync();
 
             return rows > 0;
         }
