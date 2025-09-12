@@ -1,19 +1,22 @@
 ﻿@model Inmobiliaria.Models.Contrato
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@inject IModelExpressionProvider ModelExpressionProvider
 
 <h2>@(ViewData["Title"] ?? "Contrato")</h2>
 
-<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Edit" method="post" class="row g-3">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
     <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "InmuebleId" }, { "Name", "InmuebleId" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "InquilinoId" }, { "Name", "InquilinoId" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Fecha Inicio" }, { "Name", "FechaInicio" }, { "Type", "date" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Fecha Fin" }, { "Name", "FechaFin" }, { "Type", "date" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Monto Mensual" }, { "Name", "MontoMensual" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Depósito" }, { "Name", "Deposito" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Estado" }, { "Name", "Estado" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Multa %" }, { "Name", "MultaPct" }, { "Type", "number" }, { "Col", "col-md-2" } })
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.InmuebleId))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "InmuebleId" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.InquilinoId))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "InquilinoId" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.FechaInicio))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Fecha Inicio" }, { "Type", "date" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.FechaFin))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Fecha Fin" }, { "Type", "date" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.MontoMensual))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Monto Mensual" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Deposito))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Depósito" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Estado))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Estado" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.MultaPct))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Multa %" }, { "Type", "number" }, { "Col", "col-md-2" } })' />
 
     <div class="col-md-12">
         <label class="form-label">Observaciones</label>

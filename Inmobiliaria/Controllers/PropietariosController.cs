@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;                         // Para Task/async
-using Microsoft.AspNetCore.Mvc;                      // Base MVC
+﻿using System.Threading.Tasks;                     // Para Task/async
+using Microsoft.AspNetCore.Mvc;                   // Base MVC
 using Inmobiliaria.Repositories;                  // Repositorios
 using Inmobiliaria.Models;                        // Modelos
 
@@ -42,6 +42,7 @@ namespace Inmobiliaria.Controllers
             p.CreadoPor = User?.Identity?.Name ?? "sistema"; // Auditoría simple
             var id = await _repo.CreateAsync(p);       // Inserta en BD
             return RedirectToAction(nameof(Details), new { id }); // Redirige a Details
+
         }
 
         // GET: /Propietarios/Edit/5

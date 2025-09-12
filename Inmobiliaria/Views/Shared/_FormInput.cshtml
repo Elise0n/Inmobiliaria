@@ -1,14 +1,14 @@
-﻿@model dynamic
+﻿@model Microsoft.AspNetCore.Mvc.ViewFeatures.ModelExpression
 @{
-    // Parámetros recibidos por ViewData
-    string label = ViewData["Label"] as string ?? "";
-    string name = ViewData["Name"] as string ?? "";
+    string label = ViewData["Label"] as string ?? Model.Metadata.DisplayName ?? Model.Name;
     string type = ViewData["Type"] as string ?? "text";
-    string col = ViewData["Col"] as string ?? "col-md-4"; // ancho por defecto
+    string col = ViewData["Col"] as string ?? "col-md-4";
 }
 
-<div class="@col">
-    <label asp-for="@name" class="form-label">@label</label>
-    <input asp-for="@name" type="@type" class="form-control" />
-    <span asp-validation-for="@name" class="text-danger"></span>
+<div class="@col mb-3">
+    <div class="form-floating">
+        <input name="@Model.Name" value="@Model.Model" type="@type" class="form-control" placeholder="@label" />
+        <label for="@Model.Name">@label</label>
+        <span data-valmsg-for="@Model.Name" class="text-danger small"></span>
+    </div>
 </div>

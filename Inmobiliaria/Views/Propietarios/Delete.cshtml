@@ -1,9 +1,12 @@
 ﻿@model Inmobiliaria.Models.Propietario
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@inject IModelExpressionProvider ModelExpressionProvider
 
 <h2>Dar de baja propietario</h2>
 <p>¿Confirmás dar de baja al propietario <strong>@Model.Apellido, @Model.Nombre</strong>?</p>
 
 <form asp-action="Delete" method="post">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
     <input type="hidden" asp-for="Id" />
     <button type="submit" class="btn btn-danger">Confirmar</button>
     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>

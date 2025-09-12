@@ -1,18 +1,21 @@
 ﻿@model Inmobiliaria.Models.Pago
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@inject IModelExpressionProvider ModelExpressionProvider
 
 <h2>@(ViewData["Title"] ?? "Pago")</h2>
 
-<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Create" method="post" class="row g-3">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="ContratoId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Nro Cuota" }, { "Name", "NroCuota" }, { "Type", "number" }, { "Col", "col-md-2" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Periodo (YYYY-MM)" }, { "Name", "Periodo" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Fecha Pago" }, { "Name", "FechaPago" }, { "Type", "date" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Importe" }, { "Name", "Importe" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Recargo" }, { "Name", "Recargo" }, { "Type", "number" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Estado" }, { "Name", "Estado" }, { "Col", "col-md-3" } })
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.NroCuota))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Nro Cuota" }, { "Type", "number" }, { "Col", "col-md-2" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Periodo))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Periodo (YYYY-MM)" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.FechaPago))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Fecha Pago" }, { "Type", "date" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Importe))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Importe" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Recargo))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Recargo" }, { "Type", "number" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Estado))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Estado" }, { "Col", "col-md-3" } })' />
 
     <div class="col-12">
         <button type="submit" class="btn btn-success">Guardar</button>

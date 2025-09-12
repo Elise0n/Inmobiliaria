@@ -114,6 +114,7 @@ namespace Inmobiliaria.Repositories
 
             var result = await cmd.ExecuteScalarAsync();       // Devuelve el ID nuevo
             return Convert.ToInt32(result);
+            
         }
 
         public async Task<bool> UpdateAsync(Propietario p)
@@ -125,7 +126,8 @@ namespace Inmobiliaria.Repositories
                     dni=@dni, nombre=@nombre, apellido=@apellido, telefono=@telefono,
                     email=@email, direccion=@direccion, activo=@activo,
                     modificado_por=@modificado_por, modificado_en=NOW()
-                WHERE id=@id AND eliminado=0;";
+                WHERE id=@id";
+            cmd.Parameters.Add(new MySqlParameter("@id", p.Id));
             cmd.Parameters.Add(new MySqlParameter("@dni", p.Dni));
             cmd.Parameters.Add(new MySqlParameter("@nombre", p.Nombre));
             cmd.Parameters.Add(new MySqlParameter("@apellido", p.Apellido));
@@ -134,7 +136,6 @@ namespace Inmobiliaria.Repositories
             cmd.Parameters.Add(new MySqlParameter("@direccion", p.Direccion));
             cmd.Parameters.Add(new MySqlParameter("@activo", p.Activo));
             cmd.Parameters.Add(new MySqlParameter("@modificado_por", p.ModificadoPor ?? "sistema"));
-            cmd.Parameters.Add(new MySqlParameter("@id", p.Id));
 
             var rows = await cmd.ExecuteNonQueryAsync();       // Filas afectadas
             return rows > 0;

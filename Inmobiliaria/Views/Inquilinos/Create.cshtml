@@ -1,17 +1,20 @@
 ﻿@model Inmobiliaria.Models.Inquilino
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@inject IModelExpressionProvider ModelExpressionProvider
 
 <h2>@(ViewData["Title"] ?? "Inquilino")</h2>
 
-<form asp-action="@ViewData["Action"]" method="post" class="row g-3">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-action="Create" method="post" class="row g-3">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
     <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "DNI" }, { "Name", "Dni" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Nombre" }, { "Name", "Nombre" }, { "Col", "col-md-4" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Apellido" }, { "Name", "Apellido" }, { "Col", "col-md-4" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Teléfono" }, { "Name", "Telefono" }, { "Col", "col-md-3" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Email" }, { "Name", "Email" }, { "Type", "email" }, { "Col", "col-md-5" } })
-    @await Html.PartialAsync("_FormInput", Model, new ViewDataDictionary(ViewData) { { "Label", "Dirección" }, { "Name", "Direccion" }, { "Col", "col-md-6" } })
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Dni))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "DNI" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Nombre))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Nombre" }, { "Col", "col-md-4" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Apellido))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Apellido" }, { "Col", "col-md-4" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Telefono))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Teléfono" }, { "Col", "col-md-3" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Email))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Email" }, { "Type", "email" }, { "Col", "col-md-5" } })' />
+    <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Direccion))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Dirección" }, { "Col", "col-md-6" } })' />
 
     <div class="col-md-2">
         <label class="form-check-label">Activo</label>
