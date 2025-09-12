@@ -4,20 +4,15 @@ using System.Data;
 using System.Threading.Tasks;
 using Inmobiliaria.Data;     // Para DbConnectionFactory
 using Inmobiliaria.Models;  // Para Propietario
-using MySqlConnector;          // Para parámetros MySql
+using MySql.Data.MySqlClient;          // Para parámetros MySql
 using System.Data.Common;
 
 namespace Inmobiliaria.Repositories
 {
     /// Implementación ADO.NET de IInquilinoRepository (MySQL).
-    public class InquilinoRepository : IInquilinoRepository
+    public class InquilinoRepository(DbConnectionFactory factory) : IInquilinoRepository
     {
-        private readonly DbConnectionFactory _factory; // Factory de conexiones
-
-        public InquilinoRepository(DbConnectionFactory factory)
-        {
-            _factory = factory;                        // Guardamos la factory inyectada
-        }
+        private readonly DbConnectionFactory _factory = factory;    // Factory de conexiones
 
         public async Task<IEnumerable<Inquilino>> GetAllAsync()
         {

@@ -13,6 +13,16 @@ builder.Services.AddTransient<IInquilinoRepository, InquilinoRepository>(); // I
 builder.Services.AddTransient<IInmuebleRepository, InmuebleRepository>();   // Inyecta InmuebleRepository
 builder.Services.AddTransient<IContratoRepository, ContratoRepository>();   // Inyecta ContratoRepository
 builder.Services.AddTransient<IPagoRepository, PagoRepository>();         // Inyecta PagoRepository/
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login"; // Redirige si no está logueado
+    });
+
+builder.Services.AddAuthorization();
+
 
 // registra la factory
 builder.Services.AddTransient<DbConnectionFactory>();
@@ -34,7 +44,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",

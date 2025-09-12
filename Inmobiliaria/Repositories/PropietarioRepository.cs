@@ -4,19 +4,14 @@ using System.Data;
 using System.Threading.Tasks;
 using Inmobiliaria.Data;     // Para DbConnectionFactory
 using Inmobiliaria.Models;  // Para Propietario
-using MySqlConnector;          // Para parámetros MySql
+using MySql.Data.MySqlClient;
 
 namespace Inmobiliaria.Repositories
 {
     /// Implementación ADO.NET de IPropietarioRepository (MySQL).
-    public class PropietarioRepository : IPropietarioRepository
+    public class PropietarioRepository(DbConnectionFactory factory) : IPropietarioRepository
     {
-        private readonly DbConnectionFactory _factory; // Factory de conexiones
-
-        public PropietarioRepository(DbConnectionFactory factory)
-        {
-            _factory = factory;                        // Guardamos la factory inyectada
-        }
+        private readonly DbConnectionFactory _factory = factory; // Factory de conexiones
 
         public async Task<IEnumerable<Propietario>> GetAllAsync()
         {

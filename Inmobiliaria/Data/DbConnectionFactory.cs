@@ -1,8 +1,8 @@
 ﻿using System;                           // Provee tipos básicos (Exception, etc.)
 using System.Data;                       // Contiene interfaces ADO.NET (IDbConnection)
 using Microsoft.Extensions.Configuration;// Permite leer configuración (appsettings.json)
-using MySqlConnector;         // Proveedor ADO.NET para MySQL/MariaDB
-using System.Data.Common;               // Contiene DbConnection
+using System.Data.Common;
+using MySql.Data.MySqlClient;               // Contiene DbConnection
 
 namespace Inmobiliaria.Data           // Namespace del proyecto (ajusta si tu proyecto cambia)
 {

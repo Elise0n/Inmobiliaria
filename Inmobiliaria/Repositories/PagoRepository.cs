@@ -4,17 +4,16 @@ using System.Data.Common;
 using System.Threading.Tasks;
 using Inmobiliaria.Data;
 using Inmobiliaria.Models;
-using MySqlConnector;
+using MySql.Data.MySqlClient;
 
 namespace Inmobiliaria.Repositories
 {
     /// <summary>
     /// Acceso a datos de pagos usando ADO.NET.
     /// </summary>
-    public class PagoRepository : IPagoRepository
+    public class PagoRepository(DbConnectionFactory factory) : IPagoRepository
     {
-        private readonly DbConnectionFactory _factory;
-        public PagoRepository(DbConnectionFactory factory) => _factory = factory;
+        private readonly DbConnectionFactory _factory = factory;
 
         public async Task<IEnumerable<Pago>> GetAllByContratoAsync(int contratoId)
         {

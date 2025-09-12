@@ -4,19 +4,14 @@ using System.Data.Common;
 using System.Threading.Tasks;
 using Inmobiliaria.Data;       // Factory de conexión
 using Inmobiliaria.Models;
-using MySqlConnector;
+using MySql.Data.MySqlClient;
 
 namespace Inmobiliaria.Repositories
 {
     /// Implementa acceso a datos de Inmuebles usando ADO.NET.
-    public class InmuebleRepository : IInmuebleRepository
+    public class InmuebleRepository(DbConnectionFactory factory) : IInmuebleRepository
     {
-        private readonly DbConnectionFactory _factory;
-
-        public InmuebleRepository(DbConnectionFactory factory)
-        {
-            _factory = factory;
-        }
+        private readonly DbConnectionFactory _factory = factory;
 
         public async Task<IEnumerable<Inmueble>> GetAllAsync()
         {
