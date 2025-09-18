@@ -6,9 +6,7 @@
 
 <form asp-action="Create" method="post" class="row g-3">
     <div asp-validation-summary="All" class="alert alert-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+   
     <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Dni))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "DNI" }, { "Col", "col-md-3" } })' />
     <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Nombre))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Nombre" }, { "Col", "col-md-4" } })' />
     <partial name="_FormInput" model="@(ModelExpressionProvider.CreateModelExpression(ViewData, m => m.Apellido))" view-data='@(new ViewDataDictionary(ViewData) { { "Label", "Apellido" }, { "Col", "col-md-4" } })' />

@@ -4,7 +4,7 @@ namespace Inmobiliaria.Models
 {
     public class Inquilino
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Required(ErrorMessage = "El DNI es obligatorio.")]
         [StringLength(20, ErrorMessage = "El DNI no puede superar 20 caracteres.")]
