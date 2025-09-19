@@ -2,7 +2,41 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="hero-section">
+    <h1 class="display-3">Gestión Inmobiliaria al Instante</h1>
+    <p class="lead">La plataforma profesional para administrar sus propiedades, contratos, propietarios e inquilinos de manera eficiente.</p>
+    <a href="@Url.Action("Index", "Inmuebles")" class="btn btn-primary btn-lg mt-3 shadow"><i class="fa-solid fa-magnifying-glass"></i> Ver Propiedades</a>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-user-tie fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Propietarios</h5>
+                <p class="card-text">Administre todos los detalles e información de contacto de sus propietarios.</p>
+                <a href="@Url.Action("Index", "Propietarios")" class="btn btn-outline-primary mt-auto">Ir a Propietarios</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-user fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Inquilinos</h5>
+                <p class="card-text">Mantenga un registro completo de los inquilinos y sus contratos asociados.</p>
+                <a href="@Url.Action("Index", "Inquilinos")" class="btn btn-outline-primary mt-auto">Ir a Inquilinos</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-building fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Inmuebles</h5>
+                <p class="card-text">Visualice y gestione el inventario de propiedades disponibles y alquiladas.</p>
+                <a href="@Url.Action("Index", "Inmuebles")" class="btn btn-outline-primary mt-auto">Ir a Inmuebles</a>
+            </div>
+        </div>
+    </div>
 </div>

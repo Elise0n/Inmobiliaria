@@ -5,9 +5,7 @@ using Inmobiliaria.Repositories;
 
 namespace Inmobiliaria.Controllers
 {
-    /// <summary>
     /// Controlador MVC para ABM de Inmuebles.
-    /// </summary>
     public class InmueblesController : Controller
     {
         private readonly IInmuebleRepository _repo;

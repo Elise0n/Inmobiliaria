@@ -40,6 +40,7 @@ namespace Inmobiliaria.Controllers
         {
             if (!ModelState.IsValid)
             {
+                //Brekpoint aquí para ver ModelState con errores
                 return View(p);   // Valida modelo
             }
             try

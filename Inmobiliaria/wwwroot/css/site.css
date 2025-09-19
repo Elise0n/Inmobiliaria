@@ -1,146 +1,91 @@
+:root {
+    /* Paleta de colores profesional y moderna */
+    --primary-color: #007bff; /* Azul Profundo */
+    --secondary-color: #6c757d; /* Gris Suave */
+    --dark-color: #343a40;
+    --light-bg: #f8f9fa;
+    --body-text-color: #333;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    /* Usar el color primario en el foco de los controles */
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-color);
 }
 
 body {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: var(--clr);
+    /* Eliminar el centrado forzado para un diseño web tradicional */
+    color: var(--body-text-color);
+    background-color: white;
+    margin-bottom: 60px; /* Espacio para el pie de página fijo */
 }
 
-.navigation {
-    width: 400px;
-    height: 70px;
-    background: white;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
+/* Estilos de la barra de navegación (Navbar) */
+.navbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
-.navigation ul{
-    display: flex;
-    width: 350px;
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color) !important;
 }
 
-.navigation ul li {
-    position: relative;
-    list-style: none;
-    width: 70px;
-    height: 70px;
-    z-index: 1;
-}
-
-.navigation ul li a{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
+.nav-link.text-dark {
+    color: var(--dark-color) !important;
     font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.navigation ul li a .icon {
-    position: relative;
-    display: block;
-    line-height: 75px;
-    font-size: 1.5rem;
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Estilo del pie de página (Footer) */
+.footer {
+    white-space: nowrap;
+    line-height: 60px;
+    background-color: var(--light-bg);
+}
+
+/* Sección destacada (Hero Section) para la página de inicio */
+.hero-section {
+    background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%); /* Fondo degradado suave */
+    padding: 80px 0;
+    margin-bottom: 40px;
+    border-radius: 10px;
     text-align: center;
-    transition: 0.5s;
-    color: var(--clr);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra sutil */
 }
 
-.navigation ul li.active a .icon{
-    transform: translateY(-32px)
+    .hero-section h1 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+    }
+
+/* Estilo de tarjeta de información */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
 }
 
-.navigation ul li .text {
-    position: absolute;
-    color: var(--clr);
-    font-weight: 400;
-    font-size: 0.75em;
-    letter-spacing: 0.05em;
-    transition: 0.5s;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.navigation ul li.active a .text{
-    transform: translateY(10px);
-    opacity: 1;
-}
-
-.indicator{
-    position: absolute;
-    top: -50%;
-    width: 70px;
-    height: 70px;
-    background: #29fd53;
-    border-radius: 50%;
-    border: 6px solid var(--clr);
-    transition: 0.5s;
-}
-
-.indicator::before{
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-right-radius: 20px;
-    box-shadow: 1px -10px 0 0 var(--clr);
-}
-
-.indicator::after{
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -22px;
-    width: 20px;
-    height: 20px;
-    background: transparent;
-    border-top-left-radius: 20px;
-    box-shadow: -1px -10px 0 0 var(--clr);
-}
-
-.navigation ul li:nth-last-child(1).active ~ .indicator{
-    transform: translateX(70px * 0:);
-}
-
-.navigation ul li:nth-last-child(2).active ~ .indicator {
-    transform: translateX(70px * 1:);
-}
-
-.navigation ul li:nth-last-child(3).active ~ .indicator {
-    transform: translateX(70px * 2:);
-}
-
-.navigation ul li:nth-last-child(4).active ~ .indicator {
-    transform: translateX(70px * 3:);
-}
-
-.navigation ul li:nth-last-child(5).active ~ .indicator {
-    transform: translateX(70px * 4:);
-}
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+    }
