@@ -1,36 +1,50 @@
 ﻿@model IEnumerable<Inmobiliaria.Models.Contrato>
 
-<h2>Contratos</h2>
-<p><a asp-action="Create" class="btn btn-primary">Nuevo Contrato</a></p>
+<div class="card shadow-sm p-4 mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Contratos</h2>
+        <p>
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fa-solid fa-file-signature"></i> Nuevo Contrato
+            </a>
+        </p>
+    </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>InmuebleId</th>
-            <th>InquilinoId</th>
-            <th>Fecha Inicio</th>
-            <th>Fecha Fin</th>
-            <th>Monto Mensual</th>
-            <th>Estado</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var c in Model)
-        {
+    <table class="table table-striped table-hover">
+        <thead>
             <tr>
-                <td>@c.InmuebleId</td>
-                <td>@c.InquilinoId</td>
-                <td>@c.FechaInicio.ToShortDateString()</td>
-                <td>@c.FechaFin.ToShortDateString()</td>
-                <td>@c.MontoMensual.ToString("C")</td>
-                <td>@c.Estado</td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@c.Id">Ver</a> |
-                    <a asp-action="Edit" asp-route-id="@c.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@c.Id">Dar de baja</a>
-                </td>
+                <th>InmuebleId</th>
+                <th>InquilinoId</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Monto Mensual</th>
+                <th>Estado</th>
+                <th>Acciones</th>            
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.InmuebleId</td>
+                    <td>@c.InquilinoId</td>
+                    <td>@c.FechaInicio.ToShortDateString()</td>
+                    <td>@c.FechaFin.ToShortDateString()</td>
+                    <td>@c.MontoMensual.ToString("C")</td>
+                    <td>@c.Estado</td>
+                    <td class="text-nowrap">
+                        <a asp-action="Details" asp-route-id="@c.Id" class="btn btn-sm btn-info text-white me-1" title="Ver Detalles">
+                            <i class="fa-solid fa-eye"></i> Ver
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@c.Id" class="btn btn-sm btn-success text-white me-1" title="Editar">
+                            <i class="fa-solid fa-pencil"></i> Editar
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@c.Id" class="btn btn-sm btn-danger text-white" title="Dar de Baja">
+                            <i class="fa-solid fa-trash-can"></i> Dar de baja
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
