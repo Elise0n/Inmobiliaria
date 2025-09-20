@@ -12,5 +12,7 @@ namespace Inmobiliaria.Repositories
         Task<int> CreateAsync(Contrato c);
         Task<bool> UpdateAsync(Contrato c);
         Task<bool> LogicalDeleteAsync(int id, string user);
+        Task<bool> ExisteSuperposicionAsync(int inmuebleId, DateTime inicio, DateTime fin, int? contratoId = null);
+
     }
 }

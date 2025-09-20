@@ -46,6 +46,12 @@ namespace Inmobiliaria.Controllers
         {
             if (id != c.Id) return BadRequest();
             if (!ModelState.IsValid) return View(c);
+            //validacion
+            if (await _repo.ExisteSuperposicionAsync(c.InmuebleId, c.FechaInicio, c.FechaFin))
+            {
+                ModelState.AddModelError("", "El inmueble ya tiene un contrato en esas fechas.");
+                return View(c);// vuelve a la vista con error
+            }
             c.ModificadoPor = User?.Identity?.Name ?? "sistema";
             var ok = await _repo.UpdateAsync(c);
             if (!ok) return NotFound();

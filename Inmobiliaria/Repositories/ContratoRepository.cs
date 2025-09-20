@@ -144,5 +144,29 @@ namespace Inmobiliaria.Repositories
                 Eliminado = r.GetBoolean(r.GetOrdinal("eliminado"))
             };
         }
+
+        public async Task<bool> ExisteSuperposicionAsync(int inmuebleId, DateTime inicio, DateTime fin, int? contratoId = null)
+        {
+            var sql = @"SELECT COUNT(*) 
+                FROM contratos 
+                WHERE inmueble_id = @inmuebleId
+                  AND eliminado = 0
+                  AND (fecha_inicio <= @fin AND fecha_fin >= @inicio)";
+
+            if (contratoId.HasValue)
+                sql += " AND id <> @contratoId";
+
+            using var conn = _factory.CreateOpenConnection();
+            using var cmd = conn.CreateCommand();
+            cmd.CommandText = sql;
+            cmd.Parameters.Add(new MySqlParameter("@inmuebleId", inmuebleId));
+            cmd.Parameters.Add(new MySqlParameter("@inicio", inicio));
+            cmd.Parameters.Add(new MySqlParameter("@fin", fin));
+            if (contratoId.HasValue)
+                cmd.Parameters.Add(new MySqlParameter("@contratoId", contratoId.Value));
+
+            var count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+            return count > 0;
+        }
     }
 }
